@@ -122,9 +122,7 @@ async def admin_reply_command(message: Message, state: FSMContext):
     await state.update_data(reply_order_number=order_number)
     await state.set_state(GiftOrderForm.admin_reply)
 
-    await message.answer(
-        f"✉️ {order_number} учун юбориладиган хабарни ёзинг."
-    )
+    await message.answer(f"✉️ {order_number} учун юбориладиган хабарни ёзинг.")
 
 
 @router.message(GiftOrderForm.admin_reply)
@@ -282,7 +280,7 @@ async def get_phone_contact(message: Message, state: FSMContext):
     await state.set_state(GiftOrderForm.country)
 
     await message.answer(
-        "🌍 Илтимос, давлатни танланг.",
+        "🌍 Совғани етказиб бериш учун давлатингизни танланг.",
         reply_markup=countries_keyboard()
     )
 
@@ -303,7 +301,7 @@ async def get_phone_text(message: Message, state: FSMContext):
     await state.set_state(GiftOrderForm.country)
 
     await message.answer(
-        "🌍 Илтимос, давлатни танланг.",
+        "🌍 Совғани етказиб бериш учун давлатингизни танланг.",
         reply_markup=countries_keyboard()
     )
 
@@ -323,7 +321,7 @@ async def get_country(message: Message, state: FSMContext):
     await state.set_state(GiftOrderForm.region)
 
     await message.answer(
-        "📍 Илтимос, вилоят ёки шаҳарни танланг.",
+        "📍 Совғани етказиб бериш учун вилоят ёки шаҳарни танланг.",
         reply_markup=regions_keyboard(country)
     )
 
@@ -345,7 +343,7 @@ async def get_region(message: Message, state: FSMContext):
     await state.set_state(GiftOrderForm.address)
 
     await message.answer(
-        "🏠 Илтимос, аниқ уй манзилингизни ёзинг.\n\n"
+        "🏠 Совғани етказиб бериш учун аниқ уй манзилингизни ёзинг.\n\n"
         "📌 Намуна: Юнусобод тумани, 12-мавзе, 45-уй, 18-хонадон",
         reply_markup=ReplyKeyboardRemove()
     )
@@ -443,9 +441,10 @@ async def confirm_order(message: Message, state: FSMContext, bot):
 
     user_text = (
         "🎉 Табриклаймиз!\n\n"
-        "✅ Сизнинг аризангиз қабул qilindi.\n\n"
+        "🎁 Сизнинг совғангиз муваффақиятли ажратилди.\n\n"
         f"📦 Буюртма рақамингиз: {order_number}\n\n"
-        "📞 Зарур ҳолатда сиз билан боғланилади.\n"
+        "🚚 Совға етказиб бериш учун тайёрланмоқда.\n"
+        "📞 Зарур ҳолатда сиз билан боғланилади.\n\n"
         "🌷 Байрамингиз муборак бўлсин!"
     )
 
